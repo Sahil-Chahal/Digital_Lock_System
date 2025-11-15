@@ -25,6 +25,10 @@ fi
 echo "✓ Icarus Verilog found"
 echo ""
 
+# Set up paths
+SRC_DIR="../Verilog_Source"
+BUILD_DIR="."
+
 # Clean previous build
 if [ -f digital_lock_sim ]; then
     echo "🧹 Cleaning previous build..."
@@ -33,7 +37,7 @@ fi
 
 # Compile
 echo "🔧 Compiling Verilog files..."
-iverilog -o digital_lock_sim digital_lock.v digital_lock_tb.v
+iverilog -o digital_lock_sim $SRC_DIR/digital_lock.v $SRC_DIR/digital_lock_tb.v
 
 if [ $? -eq 0 ]; then
     echo "✓ Compilation successful"

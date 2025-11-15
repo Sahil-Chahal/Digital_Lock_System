@@ -4,13 +4,16 @@
 echo "Testing Digital Lock System Compilation..."
 echo ""
 
-cd /workspaces/Digital_Lock_System
+cd /workspaces/Digital_Lock_System/Build_Tools
+
+# Set up paths
+SRC_DIR="../Verilog_Source"
 
 # Clean previous files
 rm -f digital_lock_sim digital_lock.vcd
 
 # Compile
-iverilog -o digital_lock_sim digital_lock.v digital_lock_tb.v
+iverilog -o digital_lock_sim $SRC_DIR/digital_lock.v $SRC_DIR/digital_lock_tb.v
 
 if [ $? -eq 0 ]; then
     echo "✓ Compilation successful!"

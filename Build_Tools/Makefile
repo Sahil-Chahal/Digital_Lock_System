@@ -7,11 +7,15 @@ VVP = vvp
 # Waveform viewer
 GTKWAVE = gtkwave
 
+# Directory structure
+SRC_DIR = ../Verilog_Source
+BUILD_DIR = .
+
 # Source files
-SRC = digital_lock.v
-TB = digital_lock_tb.v
-OUTPUT = digital_lock_sim
-VCD = digital_lock.vcd
+SRC = $(SRC_DIR)/digital_lock.v
+TB = $(SRC_DIR)/digital_lock_tb.v
+OUTPUT = $(BUILD_DIR)/digital_lock_sim
+VCD = $(BUILD_DIR)/digital_lock.vcd
 
 # Default target
 all: compile simulate
@@ -42,7 +46,7 @@ clean:
 # Synthesis (if you have yosys)
 synthesis:
 	@echo "Running synthesis..."
-	yosys -p "read_verilog $(SRC); synth -top digital_lock; write_verilog digital_lock_synth.v"
+	yosys -p "read_verilog $(SRC); synth -top digital_lock; write_verilog $(BUILD_DIR)/digital_lock_synth.v"
 	@echo "Synthesis complete!"
 
 # Help
